@@ -1,0 +1,31 @@
+<!-- Modal de Detalhes do Funcionário -->
+<div class="modal-header">
+  <h5 class="modal-title" id="detalhesFuncionarioModalLabel">Detalhes do Servico</h5>
+  <button type="button" class="btn-close" (click)="close()" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <!-- Formulário de edição -->
+  <form  [formGroup]="editForm" *ngIf="isEditing" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="tipo" formControlName="tipo" name="tipo" required>
+    </div>
+    <div class="mb-3">
+      <label for="preco" class="form-label">Preco</label>
+      <input type="text" class="form-control" id="preco" formControlName="preco" name="preco" required>
+    </div>
+  </form>
+
+  <!-- Exibição dos dados se não estiver em modo de edição -->
+  <div *ngIf="!isEditing">
+    <p><strong>Nome:</strong> {{ servicoSelecionado.tipo }}</p>
+    <p><strong>Preco:</strong> {{ servicoSelecionado.preco }}</p>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button *ngIf="isEditing" type="submit" class="btn btn-primary" (click)="save()">Salvar Alterações</button>
+  <button *ngIf="isEditing" type="button" class="btn btn-danger" (click)="discardChanges()">Descartar Alterações</button>
+  <button *ngIf="!isEditing" class="btn btn-warning" (click)="edit()">Editar</button>
+  <button type="button" class="btn btn-secondary" (click)="close()">Fechar</button>
+</div>

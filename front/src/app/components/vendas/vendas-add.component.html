@@ -1,0 +1,69 @@
+<!-- Modal de Detalhes do Funcionário -->
+<div class="modal-header">
+    <h5 class="modal-title" id="detalhesFuncionarioModalLabel">Adicionar nova Venda</h5>
+    <button type="button" class="btn-close" (click)="close()" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <!-- Formulário de edição -->
+    <form  [formGroup]="editForm">
+      <div class="mb-3">
+        <label for="clientes" class="form-label">Selecione um Cliente:</label>
+        <select id="clientes" formControlName="idCliente" class="form-select" (change)="onSelecionarCliente($event)">
+          <option *ngFor="let cliente of clientes" [value]="cliente.idUser">
+            {{ cliente.nome }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="funcionarios" class="form-label">Selecione um Funcionário:</label>
+        <select id="funcionarios" formControlName="idFuncionario" class="form-select" (change)="onSelecionarFuncionario($event)">
+          <option *ngFor="let funcionario of funcionarios" [value]="funcionario.idUser">
+            {{ funcionario.nome }}
+          </option>
+        </select>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-6">
+          <label>Selecionados:</label>
+          <ul class="list-group">
+            <li *ngFor="let item of selectedItems" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ item.tipo }}
+              <button class="btn btn-danger btn-sm" (click)="removeFromSelected(item)">
+                <i class="bi bi-x-circle"></i> <!-- Ícone de remoção -->
+              </button>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="col-md-6">
+          <label>Disponíveis:</label>
+          <ul class="list-group">
+            <li *ngFor="let servico of servicos" 
+                class="list-group-item list-group-item-action cursor-pointer"
+                (click)="addToSelected(servico)">
+              {{ servico.tipo }}
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="valorPago" class="form-label">Valor a Pagar</label>
+        <input type="number" class="form-control" id="valorPago" formControlName="valorPago" name="valorPago" readonly required>
+      </div>
+
+      <div class="mb-3">
+        <label for="dataVenda" class="form-label">Data da Venda</label>
+        <input type="date" class="form-control" id="dataVenda" formControlName="dataVenda" name="dataVenda" required>
+      </div>
+    </form>
+  
+  </div>
+  
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button type="button" class="btn btn-secondary" (click)="close()">Fechar</button>
+  </div>
+  

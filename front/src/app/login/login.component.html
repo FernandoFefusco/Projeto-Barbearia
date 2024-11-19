@@ -1,0 +1,18 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+    <div class="text-center">
+      <h1 class="h3 mb-3">Barbearia</h1>
+    </div>
+    <form [formGroup]="editForm">
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuário:</label>
+        <input type="text" id="username" formControlName="username" class="form-control" name="username" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha:</label>
+        <input type="password" id="password" formControlName="password" class="form-control" name="password" />
+      </div>
+      <button type="button" (click)="onSubmit()" class="btn btn-primary w-100">Entrar</button>
+    </form>
+  </div>
+</div>

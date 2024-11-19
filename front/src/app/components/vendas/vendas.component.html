@@ -1,0 +1,17 @@
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let venda of vendas">
+    <div>
+      {{ venda.idVenda }} - (C) {{ venda.cliente.nome }} - (F) {{ venda.funcionario.nome }} - {{ venda.dataVenda | date: 'dd/MM/yyyy' }}
+      <ul>
+        <li *ngFor="let servico of venda.servicos">
+          Tipo de Serviço: {{ servico.tipo }} - R$ {{ servico.preco }}
+        </li>
+        Valor Total R$ {{ venda.valorPago }}
+      </ul>
+    </div>
+    <div>
+      <i class="bi bi-pencil text-primary me-3" (click)="openModal(venda)" style="cursor: pointer;"></i>
+      <i class="bi bi-trash text-danger" (click)="excluir(venda)" style="cursor: pointer;"></i>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let cliente of clientes">
+    <div>
+      {{ cliente.nome }}
+    </div>
+    <div>
+      <i class="bi bi-pencil text-primary me-3" (click)="openModal(cliente)" style="cursor: pointer;"></i>
+      <i class="bi bi-trash text-danger" (click)="excluir(cliente)" style="cursor: pointer;"></i>
+    </div>
+  </li>
+</ul>

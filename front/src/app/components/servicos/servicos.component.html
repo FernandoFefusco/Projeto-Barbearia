@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let servico of servicos">
+    <div>
+      {{ servico.tipo }}
+    </div>
+    <div>
+      <i class="bi bi-pencil text-primary me-3" (click)="openModal(servico)" style="cursor: pointer;"></i>
+      <i class="bi bi-trash text-danger" (click)="excluir(servico)" style="cursor: pointer;"></i>
+    </div>
+  </li>
+</ul>

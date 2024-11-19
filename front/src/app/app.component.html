@@ -1,0 +1,46 @@
+<div class="container-fluid" style="background-color: #0C050C;">
+  <!-- Navbar com um ícone -->
+  <a routerLink="/home">
+    <img src="../../assets/logo.png" alt="Logo" class="logo mt-1"
+         style="position: absolute; top: 10px; right: 10px; width: 50px; border-radius: 50%;" />
+  </a>
+
+  <!-- Conteúdo principal com o Menu Lateral -->
+  <div class="row">
+    <!-- Menu Lateral -->
+    <div class="col-md-3 col-lg-2 p-0 bg-dark d-flex flex-column" style="height: 100vh;" *ngIf="!isLoginPage">
+      <div class="d-flex flex-column text-light" style="flex-grow: 1;">
+        <div class="row">
+          <div class="col-md-12">
+            <a routerLink="/home" style="text-decoration: none;">
+              <div class="p-3">
+                <h5 style="color: rgb(241, 93, 50);">Menu</h5>
+              </div>
+            </a>   
+          </div>
+        </div>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action text-light bg-dark" routerLink="/clientes" routerLinkActive="active-orange">Clientes</a>
+          <a class="list-group-item list-group-item-action text-light bg-dark" routerLink="/funcionarios" routerLinkActive="active-orange">Funcionários</a>
+          <a class="list-group-item list-group-item-action text-light bg-dark" routerLink="/servicos" routerLinkActive="active-orange">Serviços</a>
+          <a class="list-group-item list-group-item-action text-light bg-dark" routerLink="/vendas" routerLinkActive="active-orange">Vendas</a>
+        </div>
+      </div>
+
+      <!-- Logout no fundo -->
+      <div class="mt-auto p-3">
+        <a routerLink="/login" class="d-block text-end">
+          <div class="mt-3 p-2"> 
+            <label style="color: rgb(241, 93, 50); cursor: pointer;">Logout</label>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Conteúdo -->
+    <div [ngClass]="{'col-md-12': isLoginPage, 'col-md-8': !isLoginPage}">
+      <router-outlet></router-outlet>
+      <!-- Aqui vai o conteúdo das páginas -->
+    </div>
+  </div>
+</div>
